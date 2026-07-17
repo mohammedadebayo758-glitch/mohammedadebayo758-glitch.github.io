@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — PEDE</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#0B0E0C;
+  --emerald:#0F3D2E;
+  --emerald-light:#1B5940;
+  --gold:#C9A227;
+  --ivory:#F1EDE4;
+  --sage:#6B8F71;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian); color:var(--ivory); font-family:'Work Sans', sans-serif; line-height:1.6; overflow-x:hidden;}
+h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; line-height:1.15;}
+a{color:inherit; text-decoration:none;}
+.eyebrow{font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:1rem;}
+.wrap{max-width:1100px; margin:0 auto; padding:0 1.5rem;}
+nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(11,14,12,0.88); backdrop-filter:blur(8px); border-bottom:1px solid rgba(201,162,39,0.15);}
+nav .wrap{display:flex; justify-content:space-between; align-items:center; height:72px;}
+.brand{font-family:'Fraunces', serif; font-weight:700; font-size:1.15rem; letter-spacing:0.02em;}
+.brand span{color:var(--gold);}
+nav ul{list-style:none; display:flex; gap:2rem;}
+nav ul li a{font-size:0.9rem; opacity:0.85; transition:opacity 0.2s;}
+nav ul li a:hover, nav ul li a.active{opacity:1; color:var(--gold);}
+.nav-cta{border:1px solid var(--gold); padding:0.5rem 1.2rem; border-radius:2px; font-size:0.85rem; transition:background 0.2s, color 0.2s; white-space:nowrap;}
+.nav-cta:hover{background:var(--gold); color:var(--obsidian);}
+section{padding:6rem 0;}
+.page-hero{padding:11rem 0 4rem; background:radial-gradient(ellipse at 70% 0%, rgba(15,61,46,0.5), transparent 60%);}
+.page-hero h1{font-size:clamp(2.2rem,5vw,3.4rem); max-width:16ch;}
+.page-hero p{max-width:56ch; opacity:0.8; margin-top:1.2rem; font-size:1.05rem;}
+.section-head{max-width:60ch; margin-bottom:3rem;}
+.section-head h2{font-size:clamp(1.7rem,3.2vw,2.4rem);}
+.section-head p{opacity:0.75; margin-top:1rem; font-size:1.02rem;}
+.btn-row{display:flex; gap:1rem; flex-wrap:wrap;}
+.btn-primary{background:var(--gold); color:var(--obsidian); font-weight:600; padding:0.9rem 1.8rem; border-radius:2px; font-size:0.95rem; transition:transform 0.2s, box-shadow 0.2s; display:inline-block; border:none; cursor:pointer;}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(201,162,39,0.25);}
+.btn-secondary{border:1px solid rgba(241,237,228,0.35); padding:0.9rem 1.8rem; border-radius:2px; font-size:0.95rem; transition:border-color 0.2s; display:inline-block;}
+.btn-secondary:hover{border-color:var(--gold); color:var(--gold);}
+.grid-6{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(201,162,39,0.2); border:1px solid rgba(201,162,39,0.2);}
+.box{background:var(--obsidian); padding:2.5rem 1.8rem; transition:background 0.3s;}
+.box:hover{background:rgba(201,162,39,0.05);}
+.box .icon{font-size:1.6rem; display:block; margin-bottom:1rem;}
+.box h3{font-size:1.1rem; margin-bottom:0.6rem;}
+.box p{font-size:0.92rem; opacity:0.72;}
+.resource-card{display:grid; grid-template-columns:180px 1fr; gap:2.5rem; align-items:center; border:1px solid rgba(201,162,39,0.25); padding:2.5rem; border-radius:4px; background:rgba(201,162,39,0.03);}
+.resource-cover{aspect-ratio:3/4; background:linear-gradient(160deg, var(--emerald), var(--obsidian)); border:1px solid var(--gold); border-radius:2px; display:flex; align-items:center; justify-content:center; text-align:center; padding:1rem;}
+.resource-cover span{font-family:'Fraunces',serif; font-size:0.95rem; color:var(--gold);}
+.resource-card h3{font-size:1.4rem; margin-bottom:0.8rem;}
+.resource-card p{opacity:0.78; margin-bottom:1.5rem;}
+.resource-list{display:flex; flex-direction:column; gap:1.5rem;}
+.resource-row{display:flex; justify-content:space-between; align-items:center; padding:1.2rem 1.5rem; border:1px solid rgba(201,162,39,0.2); border-radius:3px;}
+.resource-row.disabled{opacity:0.45;}
+.tag{font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--sage); border:1px solid var(--sage); padding:0.25rem 0.6rem; border-radius:2px;}
+.cta{background:linear-gradient(135deg, var(--emerald), #0a2a20); text-align:center; border-radius:4px; padding:4.5rem 2rem; position:relative; overflow:hidden;}
+.cta::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, rgba(201,162,39,0.18), transparent 60%);}
+.cta-inner{position:relative; z-index:2; max-width:640px; margin:0 auto;}
+.cta h2{font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:1rem;}
+.cta p{opacity:0.85; margin-bottom:2rem;}
+.about-block{display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-bottom:4rem;}
+.about-block h2{font-size:1.6rem; margin-bottom:1rem;}
+.about-block p{opacity:0.8; margin-bottom:1rem;}
+.values-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;}
+.value{border-left:2px solid var(--gold); padding-left:1.2rem;}
+.value h4{font-size:1.05rem; margin-bottom:0.4rem;}
+.value p{font-size:0.92rem; opacity:0.72;}
+form.contact-form{display:flex; flex-direction:column; gap:1.2rem; max-width:560px;}
+form.contact-form input, form.contact-form textarea{
+  background:rgba(241,237,228,0.05); border:1px solid rgba(201,162,39,0.3); color:var(--ivory);
+  padding:0.9rem 1rem; border-radius:2px; font-family:'Work Sans',sans-serif; font-size:0.95rem;
+}
+form.contact-form input:focus, form.contact-form textarea:focus{outline:none; border-color:var(--gold);}
+form.contact-form label{font-size:0.85rem; opacity:0.7; margin-bottom:0.3rem; display:block;}
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:4rem;}
+.contact-info{display:flex; flex-direction:column; gap:1.8rem;}
+.contact-info .item .eyebrow{margin-bottom:0.3rem;}
+.contact-info .item a, .contact-info .item p{font-size:1.05rem;}
+footer{padding:4rem 0 2rem; border-top:1px solid rgba(201,162,39,0.15); margin-top:6rem;}
+.footer-row{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem;}
+footer .brand{margin-bottom:0.5rem;}
+footer .cols{opacity:0.6; font-size:0.85rem;}
+.foot-links{display:flex; gap:2rem; list-style:none; font-size:0.9rem;}
+.foot-links a{opacity:0.75; transition:opacity 0.2s;}
+.foot-links a:hover{opacity:1; color:var(--gold);}
+.foot-contact{opacity:0.65; font-size:0.85rem; line-height:1.8;}
+.foot-bottom{margin-top:3rem; font-size:0.8rem; opacity:0.5;}
+.reveal{opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;}
+.reveal.visible{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;} .reveal{transition:none; opacity:1; transform:none;}}
+@media (max-width:800px){
+  nav ul{display:none;}
+  .grid-6{grid-template-columns:1fr;}
+  .resource-card{grid-template-columns:1fr;}
+  .resource-cover{max-width:160px;}
+  .about-block{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="PEDE logo" style="height:44px; display:block;"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Join Us</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Resources</span>
+    <h1>Free blueprints to guide your journey.</h1>
+    <p>Practical, downloadable guides from PEDE — free to download, built to help you take real action.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="resource-list reveal">
+      <div class="resource-row">
+        <div style="display:flex; align-items:center; gap:1.5rem;">
+          <img src="images/pb-001-cover.png" alt="PB-001 book cover" style="width:60px; height:auto; border-radius:2px; border:1px solid rgba(201,162,39,0.3);">
+          <div>
+            <span class="tag">PB-001</span>
+            <h3 style="margin-top:0.6rem; font-size:1.15rem;">From Zero to Legitimate Online Income</h3>
+          </div>
+        </div>
+        <a href="#" class="btn-primary">Download</a>
+      </div>
+      <div class="resource-row disabled">
+        <div>
+          <span class="tag">PB-002+</span>
+          <h3 style="margin-top:0.6rem; font-size:1.15rem;">Future Blueprints</h3>
+        </div>
+        <span style="font-size:0.9rem; opacity:0.7;">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="cta-inner">
+        <h2>Want new blueprints as they drop?</h2>
+        <p>Join our WhatsApp community to be the first to know when new PEDE resources are released.</p>
+        <a href="contact.html" class="btn-primary">💬 Join WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div>
+        <img src="images/logo.png" alt="PEDE logo" style="height:56px; margin-bottom:0.8rem; display:block;">
+        <p class="cols">A digital empowerment initiative by Project Ebony Consultancy Ltd</p>
+      </div>
+      <div class="foot-contact">
+        Phone: +234 904 003 6347<br>
+        Email: pedeprojectebonydigitalempire@gmail.com<br>
+        Website: yourdomain.com
+      </div>
+      <ul class="foot-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <p class="foot-bottom">© <span id="year"></span> Project Ebony Digital Empire. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toObserve = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  toObserve.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
